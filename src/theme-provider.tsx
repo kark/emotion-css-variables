@@ -5,16 +5,13 @@ import {
   useState,
   useMemo,
   useContext,
-  useCallback,
   type ReactNode,
   type LegacyRef,
-} from 'react';
-import kebabCase from 'lodash/kebabCase';
-import { themes } from './custom-properties';
+} from "react";
+import kebabCase from "lodash/kebabCase";
+import { themes } from "./custom-properties-as-css-vars";
 
 type ThemeName = keyof typeof themes;
-
-const allThemesNames = Object.keys(themes);
 
 const ThemeContext = createContext({});
 
@@ -29,15 +26,7 @@ type ThemeProviderProps = {
 
 const ThemeProvider = (props: ThemeProviderProps) => {
   const root = useRef<HTMLDivElement>();
-  const [theme, setTheme] = useState<ThemeName>('default');
-
-  const changeTheme = useCallback((newTheme: string) => {
-    if (allThemesNames.some((themeName) => themeName === newTheme)) {
-      setTheme(newTheme as ThemeName);
-    } else {
-      setTheme('default');
-    }
-  }, []);
+  const [theme] = useState<ThemeName>("default");
 
   useLayoutEffect(() => {
     const vars = toVars(themes[theme]);
@@ -47,8 +36,8 @@ const ThemeProvider = (props: ThemeProviderProps) => {
   }, [theme]);
 
   const value = useMemo(() => {
-    return { theme, changeTheme };
-  }, [theme, changeTheme]);
+    return { theme };
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={value}>
@@ -60,7 +49,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 const useTheme = () => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
 };
