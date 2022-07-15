@@ -1,1 +1,1 @@
-## Emotion & css variables issue in production mode repro
+## Emotion issue with css variables in production mode repro
