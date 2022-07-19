@@ -59,29 +59,7 @@ const getInputStyles = (props: TInputProps) => css`
   font-family: inherit;
   font-size: ${props.vars[designTokens.fontSizeForInput]};
   height: ${props.vars.sizeHeightInput};
-  min-height: ${props.vars.sizeHeightInput};
-  outline: none;
-  overflow: hidden;
   padding: 0 ${props.vars.spacingS};
-  transition: border-color ${props.vars.transitionStandard},
-    background-color ${props.vars.transitionStandard},
-    color ${props.vars.transitionStandard},
-    box-shadow ${props.vars.transitionStandard};
-  width: 100%;
-
-  &::placeholder {
-    color: ${props.vars[designTokens.placeholderFontColorForInput]};
-  }
-  :active,
-  :focus,
-  :hover:not(:disabled):not(:read-only) {
-    border-color: ${props.vars[designTokens.borderColorForInputWhenFocused]};
-  }
-  :focus {
-    box-shadow: inset 0 0 0 2px
-      ${props.vars[designTokens.borderColorForInputWhenFocused]};
-  }
-
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   margin-left: 0;
@@ -130,7 +108,12 @@ const MoneyInput = (props: TInputProps) => (
     >
       EUR
     </CurrencyLabel>
-    <input id="money-input" value={20} css={getInputStyles(props)} />
+    <input
+      id="money-input"
+      value={20}
+      css={getInputStyles(props)}
+      onChange={() => {}}
+    />
   </div>
 );
 

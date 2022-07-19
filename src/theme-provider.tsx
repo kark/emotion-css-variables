@@ -4,7 +4,6 @@ import {
   useRef,
   useState,
   useMemo,
-  useContext,
   type ReactNode,
   type LegacyRef,
 } from "react";
@@ -46,12 +45,4 @@ const ThemeProvider = (props: ThemeProviderProps) => {
   );
 };
 
-const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
-};
-
-export { ThemeProvider, useTheme };
+export default ThemeProvider;
