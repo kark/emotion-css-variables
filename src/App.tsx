@@ -1,4 +1,4 @@
-import { ThemeProvider } from "./theme-provider";
+import ThemeProvider from "./theme-provider";
 import customProperties from "./custom-properties-as-css-vars";
 import customPropertiesHardcoded from "./custom-properties-hardcoded";
 import MoneyInput from "./money-input";
