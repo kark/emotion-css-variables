@@ -3,9 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "________________________________codesandbox________________________________": "",
     "dev": "yarn build && yarn preview",
     "build": "tsc && vite build",
     "preview": "vite preview --host --port 3000",
+    "start": "vite --host --port 3000",
     "test:e2e": "yarn jest -c jest.config.js",
     "vrt": "yarn percy exec -- yarn test:e2e",
     "vrt:local": "PERCY_TOKEN=$(grep 'PERCY_TOKEN.*' .env | sed 's/.*=//') PERCY_BRANCH=master yarn percy exec -- yarn test:e2e"
