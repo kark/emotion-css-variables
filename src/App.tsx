@@ -8,11 +8,11 @@ function App() {
     <>
       <ThemeProvider>
         <p>MoneyInput - css vars</p>
-        <MoneyInput isDisabled vars={customProperties} />
+        <MoneyInput vars={customProperties} />
       </ThemeProvider>
 
       <p>MoneyInput - hardcoded</p>
-      <MoneyInput isDisabled vars={customPropertiesHardcoded} />
+      <MoneyInput vars={customPropertiesHardcoded} />
     </>
   );
 }

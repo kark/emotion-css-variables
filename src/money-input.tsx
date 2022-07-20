@@ -3,86 +3,26 @@ import { css } from "@emotion/react";
 import designTokens from "./design-tokens";
 
 type TInputProps = {
-  isDisabled?: boolean;
-  disabled?: boolean;
-  hasError?: boolean;
-  hasWarning?: boolean;
-  isReadOnly?: boolean;
-  readOnly?: boolean;
   vars: Record<string, string>;
 };
 
-const getInputBorderColor = (props: TInputProps) => {
-  if (props.isDisabled || props.disabled) {
-    return props.vars[designTokens.borderColorForInputWhenDisabled];
-  }
-  if (props.hasError) {
-    return props.vars[designTokens.borderColorForInputWhenError];
-  }
-  if (props.hasWarning) {
-    return props.vars[designTokens.borderColorForInputWhenWarning];
-  }
-  if (props.isReadOnly || props.readOnly) {
-    return props.vars[designTokens.borderColorForInputWhenReadonly];
-  }
-  return props.vars[designTokens.borderColorForInput];
-};
-
-const getInputFontColor = (props: TInputProps) => {
-  if (props.isDisabled || props.disabled) {
-    return props.vars[designTokens.fontColorForInputWhenDisabled];
-  }
-  if (props.hasError) {
-    return props.vars[designTokens.fontColorForInputWhenError];
-  }
-  if (props.hasWarning) {
-    return props.vars[designTokens.fontColorForInputWhenWarning];
-  }
-  if (props.isReadOnly || props.readOnly) {
-    return props.vars[designTokens.fontColorForInputWhenReadonly];
-  }
-  return props.vars[designTokens.fontColorForInput];
-};
-
 const getInputStyles = (props: TInputProps) => css`
-  appearance: none;
-  background-color: ${props.isDisabled || props.disabled
-    ? props.vars[designTokens.backgroundColorForInputWhenDisabled]
-    : props.vars[designTokens.backgroundColorForInput]};
-  border: 1px solid ${getInputBorderColor(props)};
+  border: 1px solid ${props.vars[designTokens.borderColorForInput]};
   border-radius: ${props.vars[designTokens.borderRadiusForInput]};
-  box-sizing: border-box;
-  color: ${getInputFontColor(props)};
-  cursor: ${props.isDisabled ? "not-allowed" : "default"};
-  display: flex;
-  flex: 1;
-  font-family: inherit;
-  font-size: ${props.vars[designTokens.fontSizeForInput]};
-  height: ${props.vars.sizeHeightInput};
-  padding: 0 ${props.vars.spacingS};
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  margin-left: 0;
 `;
 
 const getCurrencyLabelStyles = (props: TInputProps) => css`
-  display: flex;
-  color: ${props.vars.fontColorForInputWhenDisabled};
-  background-color: ${props.vars.backgroundColorForInputWhenDisabled};
+  border: 1px solid ${props.vars[designTokens.borderColorForInput]};
+  border-right: 0;
   border-top-left-radius: ${props.vars.borderRadiusForInput};
   border-bottom-left-radius: ${props.vars.borderRadiusForInput};
-  border: 1px solid ${props.vars.borderColorForInputWhenDisabled};
-  border-right: 0;
-  padding: 0 ${props.vars.spacingS};
-  align-items: center;
-  font-size: ${props.vars.fontSizeForInput};
-  box-sizing: border-box;
 `;
 
 type TLabel = {
   id: string;
   children?: ReactNode;
-  isDisabled?: boolean;
   vars: Record<string, string>;
 };
 
@@ -95,17 +35,12 @@ const CurrencyLabel = (props: TLabel) => (
 const MoneyInput = (props: TInputProps) => (
   <div
     css={css`
-      font-family: inherit;
       width: 100%;
       position: relative;
       display: flex;
     `}
   >
-    <CurrencyLabel
-      id="money-input"
-      isDisabled={props.isDisabled}
-      vars={props.vars}
-    >
+    <CurrencyLabel id="money-input" vars={props.vars}>
       EUR
     </CurrencyLabel>
     <input
