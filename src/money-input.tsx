@@ -16,6 +16,7 @@ const getInputStyles = (props: TInputProps) => css`
 const getCurrencyLabelStyles = (props: TInputProps) => css`
   border: 1px solid ${props.vars[designTokens.borderColorForInput]};
   border-right: 0;
+  background-color: ${props.vars[designTokens.backgroundColorForInput]};
   border-top-left-radius: ${props.vars.borderRadiusForInput};
   border-bottom-left-radius: ${props.vars.borderRadiusForInput};
 `;

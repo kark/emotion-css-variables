@@ -1,6 +1,7 @@
 export const themes = {
   default: {
     colorNeutral60: "hsl(0, 0%, 60%)",
+    colorSurface: "yellow",
     borderRadius6: "6px",
     borderRadiusForInput: "6px",
   },
@@ -8,6 +9,7 @@ export const themes = {
 
 export default {
   colorNeutral60: "var(--color-neutral-60, hsl(0, 0%, 60%))",
+  colorSurface: "var(--color-surface, yellow)",
   borderRadius6: "var(--border-radius-6, 6px)",
   borderRadiusForInput: "var(--border-radius-for-input, 6px)",
 } as const;
